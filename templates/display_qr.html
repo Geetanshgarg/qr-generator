@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Display</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <span class="logo-text">QrCodeGenerator</span>
+      </div>
+    </nav>
+    <div class="container">
+      <main>
+        <div
+          class="displayQr"
+          style="display: flex; flex-direction: column; align-items: center"
+        >
+          <h1>QR Code</h1>
+          <img src="{{ filepath }}" alt="QR Code" />
+          <button id="back-btn" class="back-btn">Go Back</button>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document
+        .getElementById("back-btn")
+        .addEventListener("click", function () {
+          window.history.back();
+        });
+    </script>
+  </body>
+</html>

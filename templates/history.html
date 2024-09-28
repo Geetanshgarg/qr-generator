@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <span class="logo-text">QrCodeGenerator</span>
+        </div>
+    </nav>
+    <div class="container">
+        <main>
+            <h1>QR Code History</h1>
+            <ul id="qr-list">
+                {% for qr_code in qr_codes %}
+                <li class="lielem">
+                    <div>
+                        <a href="{{ url_for('display_qr', filename=qr_code.split('/')[-1]) }}">
+                            <img src="{{ qr_code }}" alt="QR Code">
+                        </a>
+                        <a href="{{ url_for('display_qr', filename=qr_code.split('/')[-1]) }}">
+                            <p>{{ qr_code.split('/')[-1].replace('.png', '') }}</p>
+                        </a>
+                    </div>
+                        
+                    <button class="delete-btn" data-filename="{{ qr_code.split('/')[-1] }}">Delete</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <button id="back-btn" class="back-btn">Back to Main Page</button>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='history.js') }}"></script>
+</body>
+</html>
